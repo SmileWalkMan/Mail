@@ -1,3 +1,4 @@
+package readpoem;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -51,7 +52,9 @@ public class ReadPoem {
 	public static ArrayList<String> gsArrNotFind=new ArrayList<String>();
 	public static void outputGS() {
 		// TODO Auto-generated method stub
-		ArrayList<String> gsArr= toArrayByFileReader("gs.txt");
+//		ArrayList<String> gsArr= toArrayByFileReader("readpoem/poemTest.txt");
+
+		ArrayList<String> gsArr= toArrayByFileReader("readpoem/poem.txt");
 		System.out.println(gsArr);
 		int num =1;
 		int	tryTime=1;
@@ -64,10 +67,24 @@ public class ReadPoem {
 				// poem-detail-header
 				Element header = document.getElementById("poem-detail-header");
 				if(header!=null) {
-					System.out.println(num+". "+header.getElementsByTag("h1").text());
-					num++;
+					Elements author= header.getElementsByClass("poem-detail-header-info");
+					if(author.get(0).wholeText().contains("作者")) {
+						System.out.println(num+". "+header.getElementsByTag("h1").text());
+						System.out.println(author.get(0).wholeText().replace(" ","")
+								.replace("译文对照","").replace("\n","").replace("【作者】","").replace("【朝代】","(").trim()+")");
+						num++;
+					}else {
+						if(tryTime<10) {
+							tryTime++;
+							i--;
+						}else {
+							tryTime=1;
+							gsArrNotFind.add(str);
+						}
+						continue;
+					}
 				}else {
-					if(tryTime<3) {
+					if(tryTime<10) {
 						tryTime++;
 						i--;
 					}else {
