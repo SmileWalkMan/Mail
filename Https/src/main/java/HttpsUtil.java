@@ -97,10 +97,10 @@ public class HttpsUtil {
         HttpsURLConnection httpsConn = getHttpsURLConnection(uri, "POST");
         httpsConn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
         httpsConn.setRequestProperty("User-Agent", 
-        		"Mozilla/5.0 (iPad; CPU OS 14_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 MicroMessenger/8.0.5(0x18000528) NetType/WIFI Language/zh_CN");
+        		"Mozilla/5.0 (iPhone; CPU iPhone OS 12_5_4 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 MicroMessenger/8.0.9(0x18000927) NetType/WIFI Language/zh_CN");
 //				"Mozilla/5.0 (iPhone; CPU iPhone OS 12_5_4 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 MicroMessenger/8.0.9(0x18000921) NetType/WIFI Language/zh_CN");
         httpsConn.setRequestProperty("Cookie", 
-				"lambo-sso-key_0_=071Svn000n477M1cVu000hqByo4Svn0l#tg0vfTqqDlya7y4mRZ77LxdlUF0F7bdi2UTzoYr0J2o=");
+				"lambo-sso-key_0_=051xxzFa1pvXsB0clnHa1wPKhQ0xxzFU#tg0vfTqqDlya7y4mRZ77LxdlUF0F7bdi2UTzoYr0J2o=");
         
 		setBytesToStream(httpsConn.getOutputStream(), data.getBytes());
         return getBytesFromStream(httpsConn.getInputStream());
